@@ -1,12 +1,23 @@
+# Define os serviços (containers) que compõem a aplicação
 services:
+  # Nome lógico do serviço usado internamente pelo Docker Compose
   minha-api:
+    # Instrui o Compose a construir a imagem localmente (em vez de baixar do registry)
     build:
+      # Diretório que serve de contexto para o build (onde o código-fonte está)
       context: ./MinhaApi
+      # Nome do Dockerfile a ser usado dentro do contexto acima
       dockerfile: Dockerfile
+    # Nome fixo atribuído ao container (substitui o nome gerado automaticamente)
     container_name: minha-api
+    # Mapeia porta do host para porta do container: "porta-do-host:porta-do-container"
     ports:
       - "8080:8080"
+    # Variáveis de ambiente injetadas no container em tempo de execução
     environment:
+      # Define o ambiente do ASP.NET Core (ativa erros detalhados, Swagger, etc.)
       - ASPNETCORE_ENVIRONMENT=Development
+      # Faz o Kestrel escutar em todas as interfaces de rede na porta 8080
       - ASPNETCORE_URLS=http://+:8080
+    # Reinicia o container automaticamente, exceto quando parado manualmente
     restart: unless-stopped
