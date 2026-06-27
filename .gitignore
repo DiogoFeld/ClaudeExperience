@@ -57,3 +57,4 @@ TestResult.xml
 nunit-*.xml
 /SimpleApi/.vs
 /SimpleApi/SimpleApi/.vs/SimpleApi
+/SimpleApi/SimpleApi/.vs/ProjectEvaluation
