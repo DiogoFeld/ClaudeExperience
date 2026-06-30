@@ -34,3 +34,18 @@ services:
       - ASPNETCORE_ENVIRONMENT=Development
       - ASPNETCORE_URLS=http://+:8080
     restart: unless-stopped
+
+
+
+  # Serviço da NewOne
+  new-one:
+    build:
+      context: ./NewOne/NewOne
+      dockerfile: Dockerfile
+    container_name: new-one
+    ports:
+      - "7070:8080"
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+    restart: unless-stopped
